@@ -1,0 +1,4 @@
+Description=x509 cert expiry pager
+
+[Timer]
+OnCalendar=*-*-* 11:00:00 UTC

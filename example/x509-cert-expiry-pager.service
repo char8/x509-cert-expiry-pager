@@ -1,0 +1,18 @@
+[Unit]
+Description=x509 cert expiry pager
+
+[Service]
+Type=oneshot
+
+LimitNOFILE=64000
+User=ubuntu
+Group=adm
+WorkingDirectory=/home/ubuntu/
+
+# template the routing key via SecretsManager with confd or similar
+ExecStart=/bin/bash -c "\
+    /usr/local/bin/x509-cert-expiry-pager -cert-dir /path/to/my/keys/ -pd-routing-key xxxxxxxxxxxxxx \
+    >> /path/to/rotated/logs/dir/x509-cert-expiry-pager.log 2>&1"
+
+[Install]
+WantedBy=multi-user.target
