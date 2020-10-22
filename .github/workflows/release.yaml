@@ -23,13 +23,13 @@ jobs:
         go get -v -t -d ./...
 
     - name: Build Linux amd64
-      run: mkdir -p builds/ && GOOS=linux GOARCH=amd64 go build -v . -o builds/x509-cert-expiry-pager-linux-amd64
-    
+      run: mkdir -p builds/ && GOOS=linux GOARCH=amd64 go build -v -o builds/x509-cert-expiry-pager-linux-amd64 .
+
     - name: Build Linux arm64
-      run: mkdir -p builds/ && GOOS=linux GOARCH=arm64 go build -v . -o builds/x509-cert-expiry-pager-linux-arm64
+      run: mkdir -p builds/ && GOOS=linux GOARCH=arm64 go build -v -o builds/x509-cert-expiry-pager-linux-arm64 .
 
     - name: Build Darwin amd64
-      run: mkdir -p builds/ && GOOS=darwin GOARCH=amd64 go build -v . -o builds/x509-cert-expiry-pager-darwin-amd64
+      run: mkdir -p builds/ && GOOS=darwin GOARCH=amd64 go build -v -o builds/x509-cert-expiry-pager-darwin-amd64 .
     
     - name: Upload binaries to release
       uses: svenstaro/upload-release-action@v2
